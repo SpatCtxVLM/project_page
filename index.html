@@ -676,6 +676,115 @@
         </div>
         <br /><br /><br /><br /> 
 
+        <!-- Diversity Section -->
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <h2 id="Generation Diversity" style="text-align: left">Generation Diversity</h2>
+            <p class="text-justify" style="text-align: left">
+               Given the same input, TesserAct can generate diverse manipulation paths, covering a wide range of possible actions.
+            </p>
+            <div class="row">
+              <!-- Left Column (Description Pills) -->
+              <div class="col-md-3 d-flex align-items-center">
+                <ul class="nav nav-pills flex-column gap-2 w-100">
+                  <li
+                    class="nav-item diversity-pill active"
+                    data-scene="case1">
+                    <a class="nav-link text-start">
+                      Pick up the cup Franka Emika Panda
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Right Column (Sample Videos) -->
+              <div class="col-md-9 d-flex align-items-center">
+                <!-- Case 1 Videos Container -->
+                <div id="case1-videos" class="row mt-2 mb-1">
+                  <div class="row-4 video-container d-flex flex-column">
+                    <div style="height: 80%">
+                      <video
+                        class="diversity-video w-100 h-100"
+                        loop
+                        playsinline
+                        autoplay
+                        muted
+                        style="object-fit: cover"
+                        data-case="case1"
+                        data-video="pick_cup/val_0_pick_up_cup_Franka_E_0"
+                      ></video>
+                    </div>
+                    <div class="text-center" style="height: 1%">
+                      <span class="text-muted">Seed 0</span>
+                    </div>
+                  </div>
+                  
+                  <div class="row-4 video-container d-flex flex-column">
+                    <div style="height: 80%">
+                      <video
+                        class="diversity-video w-100 h-100"
+                        loop
+                        playsinline
+                        autoplay
+                        muted
+                        style="object-fit: cover"
+                        data-case="case1"
+                        data-video="pick_cup/val_0_pick_up_cup_Franka_E_1"
+                      ></video>
+                    </div>
+                    <div class="text-center" style="height: 1%">
+                      <span class="text-muted">Seed 1</span>
+                    </div>
+                  </div>
+                </div>              
+
+              </div>
+            </div>
+
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                let currentCase = "case1";
+
+                // Handle diversity pill clicks
+                document
+                  .querySelectorAll(".diversity-pill")
+                  .forEach((pill) => {
+                    pill.addEventListener("click", function () {
+                      document
+                        .querySelectorAll(".diversity-pill")
+                        .forEach((p) => p.classList.remove("active"));
+                      this.classList.add("active");
+                      currentCase = this.dataset.scene;
+                      updateVideos();
+                    });
+                  });
+
+                function updateVideos() {
+                  // Toggle visibility of video containers
+                  document.getElementById("case1-videos").style.display =
+                    currentCase === "case1" ? "flex" : "none";
+
+                  // Update video sources if not already loaded
+                  document
+                    .querySelectorAll(".diversity-video")
+                    .forEach((video) => {
+                      if (video.dataset.case === currentCase && !video.src) {
+                        const videoLetter = video.dataset.video;
+                        console.log(`assets/diversity/${videoLetter}.mp4`);
+                        video.src = `assets/diversity/${videoLetter}.mp4`;
+                        video.poster = `assets/diversity/${videoLetter}.png`;
+                        video.load();
+                      }
+                    });
+                }
+
+                // Initial load
+                updateVideos();
+              });
+            </script>
+          </div>
+        </div>
+        <br /><br /><br /><br />
+
       </main>
       <footer>
         <div class="row">
@@ -765,9 +874,6 @@
       });
     });
     </script>
-    <footer>
-    &copy; 2025 4D Embodied World Models. All rights reserved.
-    </footer>
   </body>
 
 </html>

@@ -320,9 +320,361 @@
               class="w-100 d-block mx-auto"
               style="min-width: min(500px, 100%)">    
             </video>
-          <br/><br/><br/><br/>
+          <br/>
+          <p class="text-justify" style="text-align: left">
+            The key features of TesserAct include:
+          </p>
+          <ul style="text-align: left; line-height: 1.8">
+            <li>🎥 RGB-DN Learning: Train with RGB, Depth, and Normal data for richer 4D scene generation and understanding.</li>
+            <li>📊 Extended Datasets: Enhance robotic datasets with depth and normal data.</li>
+            <li>🌌 4D Scene Generation: Create high-quality, temporally coherent scenes.</li>
+            <li>🤖 Better Policy Learning: Boost agent performance with advanced 4D information.</li>
+          </ul>
+          <br/><br/>
+
           </div>
         </div>
+
+        <!-- Different Prompts Section -->
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <h2 id="free-camera-trajectory" style="text-align: left">
+              Action-Rich Generations
+            </h2>
+            <p class="text-justify" style="text-align: left">
+              Our model can generate action-rich videos. Results below show the generated videos with same input image and different prompts.
+            </p>
+            <div class="row">
+              <!-- Description Pills -->
+              <div
+                class="col-md-4"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  text-align: left;
+                ">
+                <!-- Input Views Row with custom scrollbar -->
+                <div
+                  style="
+                    width: 100%;
+                    height: 150px;
+                    position: relative;
+                    overflow: hidden;
+                    margin-bottom: 1rem;
+                  "
+                >
+                  <div
+                    id="input-views-container"
+                    class="d-flex flex-nowrap gap-2"
+                    style="
+                      padding: 5px;
+                      height: 100%;
+                      overflow-x: auto;
+                      overflow-y: hidden;
+                    ">
+                    <!-- Dynamically inserted images will appear here -->
+                  </div>
+                  <div
+                    id="input-views-scrollbar"
+                    style="
+                      position: absolute;
+                      bottom: 0;
+                      left: 0;
+                      right: 0;
+                      height: 8px;
+                      background: #eee;
+                    "
+                  ></div>
+                </div>
+                <br />
+                <ul class="nav nav-pills flex-column gap-2">
+                  <li
+                    class="nav-item description-pill active"
+                    data-scene="Sponge">
+                    <a class="nav-link">Sponge</a>
+                  </li>
+                  <li
+                    class="nav-item description-pill"
+                    data-scene="Fruits"
+                  >
+                    <a class="nav-link">Fruits</a>
+                  </li>
+                  <li
+                    class="nav-item description-pill"
+                    data-scene="Clothes">
+                    <a class="nav-link">Clothes</a>
+                  </li>
+
+                </ul>
+              </div>
+              <div class="col-md-8">
+                <!-- Video 1 Container with fixed height -->
+                <div class="row mt-2 mb-1">
+                  <div
+                    class="col-12 video-container"
+                  >
+                    <video
+                      id="free-sample_1"
+                      loop
+                      playsinline
+                      autoplay
+                      muted
+                      style="object-fit: contain"
+                    ></video>
+                  </div>
+                  <div class="text-center" style="height: 10%" >
+                    <span class="text-muted-actionrich">Pick up the sponge Google Robot.</span>
+                  </div>
+                </div>
+
+                <!-- Video 2 Container with fixed height -->
+                <div class="row mt-2 mb-1">
+                  <div class="col-12 video-container">
+                    <video
+                      id="free-sample_2"
+                      loop
+                      playsinline
+                      autoplay
+                      muted
+                      style="object-fit: contain"
+                    ></video>
+                  </div>
+                  <div class="text-center" style="height: 10%">
+                    <span class="text-muted-actionrich">Use the sponge to clean the table Google Robot.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                const modalImage = document.getElementById("modalImage");
+                const inputViewsContainer = document.getElementById(
+                  "input-views-container",
+                );
+                inputViewsContainer.addEventListener("click", function (event) {
+                  if (event.target.classList.contains("zoomable")) {
+                    modalImage.src = event.target.src;
+                  }
+                });
+              });
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                let scene = "Sponge";
+                const video_1 = document.getElementById("free-sample_1");
+                const video_2 = document.getElementById("free-sample_2");
+                
+                // Custom Scrollbar function for horizontal scroll containers.
+                // Displays the scrollbar only when there are 5 or more images.
+                function updateCustomScrollbar(containerId, scrollbarId) {
+                  const container = document.getElementById(containerId);
+                  const scrollbar = document.getElementById(scrollbarId);
+                  if (!container || !scrollbar) return;
+
+                  // If fewer than 5 images, remove the scrollbar.
+                  if (container.children.length < 5) {
+                    scrollbar.style.display = "none";
+                    return;
+                  } else {
+                    scrollbar.style.display = "block";
+                  }
+
+                  const scrollWidth = container.scrollWidth;
+                  const clientWidth = container.clientWidth;
+                  const maxScrollLeft = scrollWidth - clientWidth;
+
+                  // If there's overflow, calculate thumb dimensions; otherwise, thumb covers full width.
+                  const thumbWidth =
+                    maxScrollLeft > 0
+                      ? Math.max((clientWidth / scrollWidth) * clientWidth, 20)
+                      : clientWidth;
+                  const maxThumbLeft = clientWidth - thumbWidth;
+                  const thumbLeft =
+                    maxScrollLeft > 0
+                      ? (container.scrollLeft / maxScrollLeft) * maxThumbLeft
+                      : 0;
+
+                  scrollbar.innerHTML = "";
+                  const thumb = document.createElement("div");
+                  thumb.style.position = "absolute";
+                  thumb.style.left = thumbLeft + "px";
+                  thumb.style.width = thumbWidth + "px";
+                  thumb.style.height = "100%";
+                  thumb.style.background = "#888";
+                  thumb.style.borderRadius = "4px";
+                  thumb.style.cursor = "pointer";
+
+                  let isDragging = false,
+                    startX = 0,
+                    startScrollLeft = container.scrollLeft;
+                  thumb.addEventListener("mousedown", (e) => {
+                    isDragging = true;
+                    startX = e.clientX;
+                    startScrollLeft = container.scrollLeft;
+                    e.preventDefault();
+                  });
+                  const mouseMoveHandler = (e) => {
+                    if (!isDragging) return;
+                    const dx = e.clientX - startX;
+                    container.scrollLeft =
+                      startScrollLeft + (dx / maxThumbLeft) * maxScrollLeft;
+                    updateCustomScrollbar(containerId, scrollbarId);
+                  };
+                  const mouseUpHandler = () => {
+                    isDragging = false;
+                  };
+                  document.addEventListener("mousemove", mouseMoveHandler);
+                  document.addEventListener("mouseup", mouseUpHandler);
+                  scrollbar.appendChild(thumb);
+                }
+
+                // Attach scroll event to update the custom scrollbar on container scroll.
+                const inputViewsContainer = document.getElementById(
+                  "input-views-container",
+                );
+                inputViewsContainer.addEventListener("scroll", function () {
+                  updateCustomScrollbar(
+                    "input-views-container",
+                    "input-views-scrollbar",
+                  );
+                });
+
+                // Monitor changes in the container (if images are added or removed) and update the scrollbar.
+                const observer = new MutationObserver(() => {
+                  updateCustomScrollbar(
+                    "input-views-container",
+                    "input-views-scrollbar",
+                  );
+                });
+                observer.observe(inputViewsContainer, { childList: true });
+
+                // Ensure the initial scrollbar size reflects the overflow once the container is fully populated.
+                window.addEventListener("load", function () {
+                  updateCustomScrollbar(
+                    "input-views-container",
+                    "input-views-scrollbar",
+                  );
+                });
+
+                // Handle description pill clicks.
+                document
+                  .querySelectorAll(".description-pill")
+                  .forEach((pill) => {
+                    pill.addEventListener("click", function () {
+                      document
+                        .querySelectorAll(".description-pill")
+                        .forEach((p) => p.classList.remove("active"));
+                      this.classList.add("active");
+                      scene = this.dataset.scene;
+                      updateVideos();
+                      updateInputViews();
+                    });
+                  });
+
+                function updateVideos() {
+                  const basePath = `assets/multiprompt/${scene}/`;
+
+                  video_1.src = `${basePath}val_0.mp4`;
+                  video_2.src = `${basePath}val_1.mp4`;
+                  
+                  video_1.poster = `${basePath}val_0.png`;
+                  video_2.poster = `${basePath}val_1.png`;
+                  
+                  video_1.load();
+                  video_2.load();
+                  
+                  const descriptions = {
+                    Sponge: [
+                      "Pick up the sponge Google Robot.",
+                      "Use the sponge to clean the table Google Robot.",
+                    ],
+                    Fruits: [
+                      "Pick up the green apple Franka Emika Panda.",
+                      "Move the red apple to the green apple Franka Emika Panda.",
+                    ],
+                    Clothes: [
+                      "Move the clothes Google Robot.",
+                      "Move the bag on the clothes Franka Emika Panda.",
+                    ],
+                  };
+
+                  const descriptionElements = document.querySelectorAll(".text-muted-actionrich");
+
+                  const sceneDescriptions = descriptions[scene] || [];
+
+                  descriptionElements.forEach((element, index) => {
+                    element.textContent = sceneDescriptions[index] || '';
+                  });
+                }
+                
+                function updateInputViews() {
+                  const container = document.getElementById("input-views-container");
+                  container.innerHTML = ""; // Clear previous images
+                  // Define number of images and sizing per scene.
+                  const sceneImageCounts = {
+                    Fruits: [1, "80px"],
+                    Clothes: [1, "80px"],
+                    Sponge: [1, "80px"],
+                  };
+                  const numImages = sceneImageCounts[scene][0];
+                  console.log(`!!!assets/multiprompt/${numImages}/single_input_image.png`);
+                  const fixedHeight = "120px";
+
+                  // Center the container if 4 or fewer images; otherwise, align to the left.
+                  container.style.justifyContent =
+                    numImages <= 4 ? "center" : "flex-start";
+
+                  let imagesLoaded = 0;
+                  function checkAllLoaded() {
+                    imagesLoaded++;
+                    if (imagesLoaded >= numImages) {
+                      // Wait one more frame to ensure the container layout is updated.
+                      requestAnimationFrame(() => {
+                        updateCustomScrollbar(
+                          "input-views-container",
+                          "input-views-scrollbar",
+                        );
+                      });
+                    }
+                  }
+
+                  for (let i = 0; i < numImages; i++) {
+                    const img = document.createElement("img");
+                    img.className = "img-thumbnail zoomable";
+                    img.setAttribute("data-bs-toggle", "modal");
+                    img.setAttribute("data-bs-target", "#imageModal");
+                    img.style.height = fixedHeight;
+                    img.style.width = "auto";
+                    img.style.flexShrink = "0";
+                    const paddedIndex = i.toString().padStart(3, "0");
+                    img.onload = checkAllLoaded;
+                    // In case of an error, count it as loaded to avoid hanging.
+                    img.onerror = checkAllLoaded;
+                    
+                    img.src = `assets/multiprompt/${scene}/single_input_image.png`;
+                    console.log(`!!!assets/multiprompt/${scene}/single_input_image.png`);
+                    container.appendChild(img);
+                  }
+
+                  // Fallback in case there are no images.
+                  if (numImages === 0) {
+                    updateCustomScrollbar(
+                      "input-views-container",
+                      "input-views-scrollbar",
+                    );
+                  }
+                }
+                
+                updateVideos(); 
+                updateInputViews();
+                
+              });
+            </script>
+          </div>
+        </div>
+        <br /><br /><br /><br /> 
 
       </main>
       <footer>
@@ -411,6 +763,7 @@
           }
         }, 3000);
       });
+    });
     </script>
     <footer>
     &copy; 2025 4D Embodied World Models. All rights reserved.

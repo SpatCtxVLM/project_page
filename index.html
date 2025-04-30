@@ -683,13 +683,18 @@
             <p class="text-justify" style="text-align: left">
               Our model supports multiple robot arm conditons: Franka Emika Panda, Google Robot, and Trossen WidowX 250. 
               Besides, these results also implies that our model have the potential to generalize to more diverse robot arms.
+              Below, we show 2 cases of coke can pick up tasks in two different styles: Ghibli and Real.
+              Both cases are generated with the same task instruction "pick up coke can" but conditioned on different robot arms.
             </p>
             <div class="row">
               <!-- Left Column (Description Pills) -->
               <div class="col-md-3 d-flex align-items-center">
                 <ul class="nav nav-pills flex-column gap-2 w-100">
                   <li class="nav-item multirobot-pill active" data-scene="case1">
-                    <a class="nav-link text-start">Pick up coke can</a>
+                    <a class="nav-link text-start">Pick up coke can (Ghibli)</a>
+                  </li>
+                  <li class="nav-item multirobot-pill" data-scene="case2">
+                    <a class="nav-link text-start">Pick up coke can (Real)</a>
                   </li>
                 </ul>
               </div>
@@ -733,6 +738,44 @@
                     </div>
                   </div>
                 </div>
+                <!-- Case 2 Videos Container -->
+                <div id="case2-videos-multirobot" class="row mt-2 mb-1">
+                  <div class="row-4 video-container d-flex flex-column">
+                    <div style="height: 80%">
+                      <video
+                        class="multirobot-video w-100 h-100"
+                        loop
+                        playsinline
+                        autoplay
+                        muted
+                        style="object-fit: cover"
+                        data-case="case2"
+                        data-video="coke2/franka">  
+                      </video>
+                    </div>
+                    <div class="text-center" style="height: 10%">
+                      <span class="text-muted">Franka Emika Panda</span>
+                    </div>
+                  </div>
+                  
+                  <div class="row-4 video-container d-flex flex-column">
+                    <div style="height: 80%">
+                      <video
+                        class="multirobot-video w-100 h-100"
+                        loop
+                        playsinline
+                        autoplay
+                        muted
+                        style="object-fit: cover"
+                        data-case="case2"
+                        data-video="coke2/bridge">  
+                      </video>
+                    </div>
+                    <div class="text-center" style="height: 10%">
+                      <span class="text-muted">Trossen WidowX 250</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             
@@ -758,8 +801,8 @@
                   // Toggle visibility of video containers
                   document.getElementById("case1-videos-multirobot").style.display =
                   currentCase_multirobot === "case1" ? "flex" : "none";
-                  // document.getElementById("case2-videos-multirobot").style.display =
-                  // currentCase_multirobot === "case2" ? "flex" : "none";                  
+                  document.getElementById("case2-videos-multirobot").style.display =
+                  currentCase_multirobot === "case2" ? "flex" : "none";                  
                   // Update video sources if not already loaded
                   document
                   .querySelectorAll(".multirobot-video")
@@ -787,6 +830,7 @@
             <h2 id="Generation Diversity" style="text-align: left">Generation Diversity</h2>
             <p class="text-justify" style="text-align: left">
                Given the same input, TesserAct can generate diverse manipulation paths, covering a wide range of possible actions.
+               Here, we show the generated videos with different random seeds during the inference process.
             </p>
             <div class="row">
               <!-- Left Column (Description Pills) -->

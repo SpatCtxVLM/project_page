@@ -934,6 +934,166 @@
         </div>
         <br /><br /><br /><br />
 
+        <!-- Limitation Section -->
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <h2 id="Limitation" style="text-align: left">Limitations & Failure Cases ⚠️</h2>
+            <p class="text-justify" style="text-align: left">
+              <!-- Analyze the model's limitations and failure cases, driving further technological improvement. -->
+              <!-- Failure Cases:  -->
+               World models are not perfect, and TesserAct is no exception.
+               The generated videos still suffer from several limitations, including visual inconsistencies (e.g., object disappearance),
+               incorrect functional understanding (e.g., wrong affordances), and limited generalization to unseen objects.
+               For more details, please refer to
+               <a href="https://github.com/UMass-Embodied-AGI/TesserAct/blob/main/doc/usage.md">
+                <!-- GitHub repository -->
+                 Usage Documentation
+              </a> in our GitHub repository.
+            </p>
+            <p class="text-justify" style="text-align: left">
+              For most seen tasks (e.g., pick up the cup) and unseen environments (e.g., different backgrounds), TesserAct can generate reasonable results.
+              To generate a perfect video, it is recommended to infer the model with ~5 random seeds and select the best one.
+            </p>
+            <div class="row">
+              <!-- Left Column (Description Pills) -->
+              <div class="col-md-3 d-flex align-items-center">
+                <ul class="nav nav-pills flex-column gap-2 w-100">
+                  <li class="nav-item limitation-pill active" data-scene="case1">
+                    <a class="nav-link text-start">Visual Inconsistency</a>
+                  </li>
+                  <li class="nav-item limitation-pill" data-scene="case2">
+                    <a class="nav-link text-start">Incorrect Functional Understanding</a>
+                  </li>
+                  <li class="nav-item limitation-pill" data-scene="case3">
+                    <a class="nav-link text-start">Limited Generalization</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Right Column (Sample Videos) -->
+              <div class="col-md-9 d-flex align-items-center">
+                <!-- Case 1 Videos Container -->
+                <div id="case1-videos-limitation" class="row mt-2 mb-1">
+                  <div class="row-4 video-container d-flex flex-column">
+                    <div style="height: 90%">
+                      <video
+                        class="limitation-video w-100 h-100"
+                        loop
+                        playsinline
+                        autoplay
+                        muted
+                        style="object-fit: cover"
+                        data-case="case1"
+                        data-video="disappearance/cup">
+                      </video>
+                    </div>
+                    <div class="text-center" style="height: 10%">
+                      <span class="text-muted">An example where the cup vanishes during the manipulation process. </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Case 2 Videos Container -->
+                <div id="case2-videos-limitation" class="row mt-2 mb-1"> 
+                  <div class="row-4 video-container d-flex flex-column">
+                    <div style="height: 90%">
+                      <video
+                        class="limitation-video w-100 h-100"
+                        loop
+                        playsinline
+                        autoplay
+                        muted
+                        style="object-fit: cover"
+                        data-case="case2"
+                        data-video="affordance/kettle">  
+                      </video>
+                    </div>
+                    <div class="text-center" style="height: 10%">
+                      <span class="text-muted">An example where the robot arm fails to understand the affordance of the kettle.</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Case 3 Videos Container -->
+                <div id="case3-videos-limitation" class="row mt-2 mb-1">
+                  <div class="row-4 video-container d-flex flex-column">
+                    <div style="height: 90%">
+                      <video
+                        class="limitation-video w-100 h-100"
+                        loop
+                        playsinline
+                        autoplay
+                        muted
+                        style="object-fit: cover"
+                        data-case="case3"
+                        data-video="unseen/mario">  
+                      </video>
+                    </div>
+                    <div class="text-center" style="height: 10%">
+                      <span class="text-muted">An example where the robot arm cannot pick up the whole Mario Toy, but only the head.</span>
+                    </div>
+                  </div>
+                </div>
+                
+                
+              </div>
+            </div>
+            
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                let currentCase_Limitation = "case1";
+                
+                // Handle limitation pill clicks
+                document
+                .querySelectorAll(".limitation-pill")
+                .forEach((pill) => {
+                  pill.addEventListener("click", function () {
+                    document
+                    .querySelectorAll(".limitation-pill")
+                    .forEach((p) => p.classList.remove("active"));
+                    this.classList.add("active");
+                    currentCase_Limitation = this.dataset.scene;
+                    updateVideos();
+                  });
+                });
+                
+                function updateVideos() {
+                  // Toggle visibility of video containers
+                  document.getElementById("case1-videos-limitation").style.display =
+                  currentCase_Limitation === "case1" ? "flex" : "none";
+                  document.getElementById("case2-videos-limitation").style.display =
+                  currentCase_Limitation === "case2" ? "flex" : "none"; 
+                  document.getElementById("case3-videos-limitation").style.display =
+                  currentCase_Limitation === "case3" ? "flex" : "none";
+                  // Update video sources if not already loaded
+                  document
+                  .querySelectorAll(".limitation-video")
+                  .forEach((video) => {
+                    if (video.dataset.case === currentCase_Limitation && !video.src) {
+                      const videoLetter = video.dataset.video;
+                      console.log(`assets/limitation/${videoLetter}.mp4`);
+                      video.src = `assets/limitation/${videoLetter}.mp4`;
+                      video.load();
+                    }
+                    });
+                  }
+                    // Initial load
+                    updateVideos();
+                  });
+            </script>
+          </div>
+        </div>
+        <br/><br/><br/><br/>
+
+        <div class="col-md-8 offset-md-2 text-start">
+          <h3 style="text-align: center">BibTeX</h3>
+          <textarea id="bibtex" class="form-control" readonly>
+          @article{tesseract,
+            title={Tesseract: Learning 4D Embodied World Models},
+          }
+          </textarea>
+        </div>
+        <br/><br/><br/><br/>
+
       </main>
       <footer>
         <div class="row">

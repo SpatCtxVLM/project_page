@@ -93,9 +93,48 @@
         font-size: 24px;
       }
       .masonry-item {
-        height: 100px;
+        width: 25%;
+        aspect-ratio: 640 / 480;
         overflow: hidden;
       }
+
+      .masonry-item,
+      .masonry-sizer{
+        width: 25%;
+      }
+      @media (max-width: 991.98px){
+        .masonry-item,
+        .masonry-sizer{
+          width: 33.333%;
+        }
+      }
+      @media (max-width: 575.98px){
+        .masonry-item,
+        .masonry-sizer{
+          width: 50%;
+        }
+      }
+
+      .video-wrapper {
+        position: relative;
+      }
+      .video-wrapper figcaption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 4px 6px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 0.9rem;
+        line-height: 1.2;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
+      .video-wrapper:hover figcaption {
+        opacity: 1;
+      }
+
       
       .masonry-item video,
       .masonry-item img {
@@ -386,6 +425,218 @@
               </video>
               </div>
             </div>
+            <br/>
+            <p class="text-justify" style="text-align: left">
+              In TesserAct, there are infinite possibilities—whether it's real-world images or samples from paintings and plays of various styles,
+              it can generate high-quality videos and 4D scenes based on user instructions.
+            </p>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row" id="masonryContainer_1"
+                     data-masonry='{"itemSelector": ".masonry-item",                         "columnWidth": ".masonry-sizer",                         "percentPosition": true}'
+                     style="text-align:center;padding-bottom:0;padding-top:0;">
+                  <div class="masonry-sizer col-md-3"></div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/1.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the cup Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/2.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the cup Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/3.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the bear google robot </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/4.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the spoon Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/5.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the orange Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/7.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick green apple Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/8.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the apple Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/9.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the apple google robot </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/10.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Use the sponge to clean up the desk google robot </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/11.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the apple google robot </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/13.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the strawberry google robot </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/14.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up cup Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/15.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the cup Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/16.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the apple Frank Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/17.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up cup Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/18.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the coke can google robot </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/19.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Move the cup near bottle Frank Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/21.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the cup Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/22.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick pear Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/23.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Move the cloth Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/27.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the can google robot </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/28.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Move the cloth Trossen WidowX 250 robot arm </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/30.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the coke can Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/31.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the toy bear google robot </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/32.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the cup Frankx Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/34.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the cup Franka Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/35.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the orange Frankx Emika Panda </figcaption>
+                    </figure>
+                  </div>
+                  <div class="masonry-item col-md-6">
+                    <figure class="video-wrapper">
+                      <video src="assets/gallery/36.mp4"
+                             autoplay loop muted playsinline></video>
+                      <figcaption>Pick up the pepsi can google robot </figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
           <br/>
           </div>
         </div>

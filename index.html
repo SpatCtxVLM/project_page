@@ -5,35 +5,23 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
     <title>
-      TesserAct: Learning 4D Embodied World Models
+      Agentic 3D Scene Generation with Spatially Contextualized VLMs
     </title>
 
-    <meta
-      name="description"
-      content="We are excited to present Learning 4D Embodied World Models, which predict the dynamic evolution of 3D scenes over time in response to an embodied agent's actions, providing both spatial and temporal consistency."
-    />
+    <link rel="icon" type="image/png" href="img/studio-set.png" />
+
+    <meta name="description" content="Agentic 3D Scene Generation with Spatially Contextualized VLMs" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1216" />
     <meta property="og:image:height" content="832" />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Tesseract: Learning 4D Embodied World Models"
-    />
-    <meta property="og:description" content="" />
+    <meta property="og:title" content="Agentic 3D Scene Generation with Spatially Contextualized VLMs" />
+    <meta property="og:description" content="Explore how VLMs use spatial context for agentic 3D scene generation." />
+    <meta name="twitter:description" content="Explore how VLMs use spatial context for agentic 3D scene generation." />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="description"
-      content="Tesseract: Learning 4D Embodied World Models"
-    />
-    <meta
-      name="twitter:description"
-      content="We are excited to present Learning 4D Embodied World Models, which predict the dynamic evolution of 3D scenes over time in response to an embodied agent's actions, providing both spatial and temporal consistency."
-    />
 
-    <link rel="icon" href="img/favicon.png" alt="Tesseract Logo"/>
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -172,10 +160,130 @@
     <!-- Add slick carousel JS -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <canvas id="c1"></canvas>
-    <script src="js/tesseract.js"></script>
+
+    <style>
+      .video-option {
+        background-color: #ffffff;
+        border: 2px solid #c5e4cc;
+        color: #4d7b5a;
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        font-style: italic;
+        transition: all 0.2s ease;
+      }
+    
+      .video-option:hover {
+        background-color: #f3fbf5;
+      }
+    
+      .video-option.active {
+        background-color: #c5e4cc;
+        color: white;
+        border: 2px solid transparent;
+      }
+    </style>
+
+<style>
+  .video-option2 {
+    background-color: #ffffff;
+    border: 2px solid #c5e4cc;
+    color: #4d7b5a;
+    padding: 3px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-style: italic;
+    transition: all 0.2s ease;
+  }
+
+  .video-option2:hover {
+    background-color: #f3fbf5;
+  }
+
+  .video-option2.active {
+    background-color: #c5e4cc;
+    color: white;
+    border: 2px solid transparent;
+  }
+</style>
+
+<style>
+  .video-option3 {
+    background-color: #ffffff;
+    border: 2px solid #c5e4cc;
+    color: #4d7b5a;
+    padding: 3px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-style: italic;
+    transition: all 0.2s ease;
+  }
+
+  .video-option3:hover {
+    background-color: #f3fbf5;
+  }
+
+  .video-option3.active {
+    background-color: #c5e4cc;
+    color: white;
+    border: 2px solid transparent;
+  }
+</style>
     
   </head>
-
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const options = document.querySelectorAll('.video-option');
+      const video = document.getElementById('mainVideo');
+  
+      options.forEach(opt => {
+        opt.addEventListener('click', () => {
+          options.forEach(o => o.classList.remove('active'));
+          opt.classList.add('active');
+          const src = opt.getAttribute('data-src');
+          video.src = src;
+          video.load();
+          video.play();
+        });
+      });
+  
+      // Auto-activate the first option on page load
+      if (options.length > 0) {
+        options[0].classList.add('active');
+        video.src = options[0].getAttribute('data-src');
+        video.load();
+        video.play();
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const options = document.querySelectorAll('.video-option2');
+      const video = document.getElementById('mainVideo2');
+  
+      options.forEach(opt => {
+        opt.addEventListener('click', () => {
+          options.forEach(o => o.classList.remove('active'));
+          opt.classList.add('active');
+          const src = opt.getAttribute('data-src');
+          video.src = src;
+          video.load();
+          video.play();
+        });
+      });
+  
+      // Auto-activate the first option on page load
+      if (options.length > 0) {
+        options[0].classList.add('active');
+        video.src = options[0].getAttribute('data-src');
+        video.load();
+        video.play();
+      }
+    });
+  </script>
   <body
     style="
       padding: 5%;
@@ -192,11 +300,13 @@
       <header role="banner">
         <div class="row">
           <h1 class="col-md-8 offset-md-2 text-center">
-            <a style="font-size: 35px">
-              <img src="img/favicon.png" alt="Logo" style="height: 45px; vertical-align: middle; margin-right: 0px; margin-bottom: 5px" />
-              <b>TesserAct: Learning 4D Embodied World Models</b>
-            </a>
-          </h1>
+            <span style="font-size: 36px; font-weight: bold; display: block;">
+              Agentic 3D Scene Generation
+            </span>
+            <span style="font-size: 36px; font-weight: bold; display: block;">
+              with Spatially Contextualized VLMs
+            </span>
+          </h1>          
         </div>
         <div class="row text-center">
           <div class="container-fluid text-center px-0">
@@ -204,58 +314,33 @@
               class="list-inline d-flex flex-wrap justify-content-center gap-0 mb-0"
               style="max-width: 800px; margin: auto">
               <li class="list-inline-item">
-                <a style="font-size: 15px" href="https://haoyuzhen.com/">Haoyu Zhen</a>
-                <sup>1*</sup>
-              </li>
-              <li class="list-inline-item">
-                <a style="font-size: 15px" href="https://qiaosun22.github.io/">Qiao Sun</a>
-                <sup>1*</sup>
-              </li>
-              <li class="list-inline-item w-100"></li>
-              <li class="list-inline-item">
-                <a style="font-size: 15px" href="https://icefoxzhx.github.io/">Hongxin Zhang</a>
+                <a style="font-size: 18px; font-weight: 500;" href="https://xinhangliu.com/">Xinhang Liu</a>
                 <sup>1</sup>
               </li>
               <li class="list-inline-item">
-                <a style="font-size: 15px" href="https://senfu.github.io/">Junyan Li</a>
-                <sup>1</sup>
-              </li>
-              <li class="list-inline-item">
-                <a style="font-size: 15px" href="https://rainbow979.github.io/">Siyuan Zhou</a>
+                <a style="font-size: 18px; font-weight: 500;" href="https://yuwingtai.github.io/">Yu-Wing Tai</a>
                 <sup>2</sup>
               </li>
               <li class="list-inline-item">
-                <a style="font-size: 15px" href="https://yilundu.github.io/">Yilun Du</a>
-                <sup>3</sup>
-              </li>
-              <li class="list-inline-item">
-                <a style="font-size: 15px" href="https://people.csail.mit.edu/ganchuang/">Chuang Gan</a>
+                <a style="font-size: 18px; font-weight: 500;" href="https://cse.hkust.edu.hk/~cktang/bio.html">Chi-Keung Tang</a>
                 <sup>1</sup>
               </li>
             </ul>
           </div>
           <div
             class="col-md-12 text-center"
-            style="font-size: 15px; margin-top: 5px"
+            style="font-size: 16px; margin-top: 10px; line-height: 1.6"
           >
-            *equal contribution<br />
-          </div>
-          <div
-            class="col-md-12 text-center"
-            style="font-size: 15px; margin-top: 5px"
-          >
-            <sup>1</sup>UMass Amherst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <sup>2</sup>HKUST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <sup>3</sup>Harvard University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <br />
+            <sup>1</sup>HKUST &nbsp;&nbsp;&nbsp;&nbsp;
+            <sup>2</sup>Dartmouth College
           </div>
         </div>
         <br />
         <div class="row text-center">
-          <div class="d-flex justify-content-center flex-wrap gap-5">
+          <div class="d-flex justify-content-center flex-wrap gap-3">
             <div class="text-center">
               <a
-                href="https://arxiv.org/abs/2504.20995"
+                href="https://arxiv.org/abs/2505.20129"
                 class="external-link is-normal"
               >
                 <img src="img/arxiv.png" alt="ArXiv" height="30" width="30" />
@@ -266,17 +351,15 @@
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  width: 80px;
+                  width: 100px;
+                  font-size: 16px;
                 "
               >
                 <b>Paper</b>
               </div>
             </div>
             <div class="text-center">
-              <a
-                href="https://github.com/UMass-Embodied-AGI/TesserAct"
-                class="external-link is-normal"
-              >
+              <a href="#" class="external-link is-normal">
                 <img src="img/github.png" alt="Github" height="30" width="30" />
               </a>
               <div
@@ -285,17 +368,15 @@
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  width: 80px;
+                  width: 100px;
+                  font-size: 16px; 
                 "
               >
                 <b>Code</b>
               </div>
             </div>
             <div class="text-center">
-              <a
-                href="https://huggingface.co/anyeZHY/tesseract"
-                class="external-link is-normal"
-              >
+              <a href="#" class="external-link is-normal">
                 <img
                   src="img/huggingface.png"
                   alt="HuggingFace"
@@ -309,7 +390,8 @@
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  width: 80px;
+                  width: 100px;
+                  font-size: 16px;
                 "
               >
                 <b>Model Card</b>
@@ -357,981 +439,218 @@
           </div>
         </div>
 
-        <!-- Introduction Section -->
+        <!-- Abstract Section -->
         <div class="row">
           <div class="col-md-8 offset-md-2">
             
-            <h2 id="intro" style="text-align: left">Now, let's enter the TesserAct</h2>
+            <h2 id="intro" style="text-align: left">Abstract</h2>
             <p class="text-justify" style="text-align: left">
-              We are excited to introduce <em>TesserAct: Learning 4D Embodied World Models</em>, 
-              a novel approach to learning 4D world models that predict how 3D scenes evolve over time in response to an input instruction, ensuring both spatial and temporal consistency. 
-              We achieve this by expanding a video generation model which depth and normal channels, which takes an input image and a text instruction to generate RGB, depth, and normal videos.
-              We then reconstruct a 4D scene by an efficient algorithm using the generated RGB, depth, and normal videos. Finally, we predict actions based on the reconstructed 4D scene.
+              Despite recent advances in multimodal content generation with vision-language models (VLMs), 
+              their ability to reason about and generate structured 3D scenes remains underexplored—limiting 
+              their potential in tasks like embodied AI, immersive simulations, and interactive 3D environments. 
+              We introduce a new paradigm that augments VLMs with a continually evolving spatial context, composed of a scene portrait, 
+              a semantically labeled point cloud, and a scene hypergraph capturing unary, binary, and higher-order spatial relationships. 
+              This structured, geometry-aware memory allows VLMs to integrate multimodal reasoning with 3D spatial understanding. 
+              Building on this foundation, we develop an agentic 3D scene generation pipeline that iteratively reads from and updates 
+              the spatial context. The pipeline includes high-quality asset generation with geometric restoration, 
+              environment setup with automatic verification, and ergonomic adjustment guided by the hypergraph. 
+              Experiments show strong generalization across diverse and challenging inputs, and demonstrate that 
+              spatial context enables downstream tasks such as interactive scene editing and path 
+              planning.
             </p>
-            <video
-              src="assets/teaser.mp4"
-              autoplay
-              loop
-              muted
-              playsinline
+            <img
+              src="assets/pipeline.jpg"
+              alt="Pipeline Overview"
               class="w-100 d-block mx-auto"
-              style="min-width: min(500px, 100%)">    
-            </video>
-          <br/>
-          <p class="text-justify" style="text-align: left">
-            Note: all images shown in teaser video are downloaded from the <a href="https://unsplash.com/">Unsplash</a> with free license.
-            All videos are generated by TesserAct and rendered by Blender.
+              style="min-width: min(500px, 100%)"
+            />
+
+
+          </div>
+        </div>
+
+
+<!-- Spatial Context Section -->
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+
+    <h2 id="spatial-context" style="text-align: left">Spatially Contextualized VLMs</h2>
+
+    <p class="text-justify" style="text-align: left">
+      Our framework equips vision-language models (VLMs) with a structured spatial context that integrates multimodal cues to establish a grounded understanding of a scene’s semantics, layout, and object relationships. This context is initialized using the user’s multimodal input, which may include one or more images, textual descriptions, or both. It consists of the following components:
+    </p>
+
+    <ul style="text-align: left; line-height: 1.8">
+      <li><b>Scene portrait:</b> A high-level representation of the scene, including a detailed textual description of the layout, objects, style, and atmosphere, along with an image that serves as a visual proxy.</li>
+
+      <li><b>Semantically labeled point cloud:</b> A colored point cloud generated from the scene portrait image(s) using a geometric foundation model. Each 3D point is assigned an RGB value and an instance label based on object masks.</li>
+
+      <li><b>Scene hypergraph:</b> A structure representing spatial relationships. Nodes correspond to object instances, while hyperedges encode unary (e.g., clearance), binary (e.g., contact, alignment), and higher-order (e.g., equidistance, symmetry) spatial relations.</li>
+    </ul>
+
+    <p class="text-justify" style="text-align: left">
+      The spatial context is dynamic—it undergoes iterative <b>readout</b> and <b>update</b> as the scene evolves. The VLM actively consults the spatial context to guide tasks such as asset generation and layout refinement. When changes are needed, it triggers a replacement or adjustment of relevant components to ensure the spatial context remains coherent and up-to-date for all subsequent reasoning and generation steps.
+    </p>
+    
+
+  </div>
+</div>
+
+<!-- Agentic 3D Scene Generation Section -->
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+
+    <h2 id="agentic-generation" style="text-align: left">Agentic 3D Scene Generation</h2>
+
+    <p class="text-justify" style="text-align: left">
+      With vision-language models (VLMs) injected with spatial context, we introduce an agentic framework for 3D scene generation, where the VLM actively consults the context to guide scene synthesis and dynamically refines it to reflect ongoing changes in the environment.
+    </p>
+
+    <ul style="text-align: left; line-height: 1.8">
+      <li>
+        <b>Asset Generation:</b> For each object in the scene hypergraph, the VLM extracts its point cloud segment and, if incomplete, restores it using a lightweight geometric module. The segment is rendered from a canonical view and passed to a mesh generator to produce a textured 3D asset.
+      </li>
+
+      <li>
+        <b>Layout Planning:</b> Each generated mesh is aligned to its corresponding point cloud segment using centroid-based initialization and ICP-based refinement.
+      </li>
+
+      <li>
+        <b>Environment Setup:</b> Based on whether the scene is indoor or outdoor, the VLM generates Blender code to construct elements such as walls, terrain, lighting, and sky. An auto-verification loop renders the scene and triggers code refinements to resolve mismatches with the spatial context.
+      </li>
+
+      <li>
+        <b>Ergonomic Adjustment:</b> To correct inter-object collisions or awkward placements, the VLM jointly optimizes object poses to satisfy soft constraints like contact, alignment, and symmetry, ensuring the final arrangement is both functional and semantically coherent.
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h2 id="gallery" tyle="text-align: left">Gallery</h2>
+    <p class="text-justify" style="text-align: left; margin-top: 15px;">
+      Our approach supports diverse inputs—including text prompts, single images, and unstructured, unposed image collections—and produces coherent, semantically aligned 3D environments across a wide range of styles and settings.
+    </p>
+
+    <p class="text-justify" style="text-align: left; margin-top: 0px;">
+      <b>Text-conditioned generation. </b> Our method produces scenes 
+      that more faithfully preserve semantic alignment, spatial structure, 
+      and stylistic intent.
+  </p>
+
+    <div class="row justify-content-center align-items-start" style="margin-top: 10px;">
+      <!-- Left: Selectable text list -->
+      <div class="col-md-3 col-sm-12">
+        <div id="videoSelector">
+          <p class="video-option" data-src="assets/gallery/1.mp4">
+            A Silicon Valley garage-style startup office.
           </p>
-          <p class="text-justify" style="text-align: left">
-            The key features of TesserAct include:
+          <p class="video-option" data-src="assets/gallery/2.mp4">
+            Sherlock Holmes’s 221B Baker Street apartment.
           </p>
-          <ul style="text-align: left; line-height: 1.8">
-            <li>🎥 RGB-DN Learning: Train with RGB, Depth, and Normal data for richer 4D scene generation and understanding.</li>
-            <li>📊 Extended Datasets: Enhance robotic datasets with depth and normal data.</li>
-            <li>🌌 4D Scene Generation: Create high-quality, temporally coherent scenes.</li>
-            <li>🤖 Better Policy Learning: Boost agent performance with advanced 4D information.</li>
-          </ul>
-          <br/><br/>
-
-          </div>
+          <p class="video-option" data-src="assets/gallery/3.mp4">
+            <span style="display: block; font-family: 'KaiTi', '楷体', serif; text-align: center; font-style: italic;">
+              竹外桃花三两枝，<br />春江水暖鸭先知。
+            </span>
+            <span style="font-size: 70%; font-style: italic; text-align: left; display: block;">
+              (Beyond the bamboo, peach blossoms bloom,<br />
+              The spring river warms — the duck knows soon.)
+            </span>
+          </p>
+          <p class="video-option" data-src="assets/gallery/4.mp4">
+            A dystopian set design reminiscent of Blade Runner 2049.
+          </p>
         </div>
+      </div>
+    
+      <!-- Right: Single video player -->
+      <div class="col-md-9 col-sm-12">
+        <video id="mainVideo" src="assets/gallery/1.mp4" controls autoplay loop muted playsinline style="width:100%; object-fit:cover; border-radius:8px;"></video>
+      </div>
+    </div>
 
-        <!-- Gallery Section -->
-        <div class="row">
-          <div class="col-md-8 offset-md-2">
-            <h2 id="gallery" style="text-align: left">Gallery</h2>
-            <p class="text-justify" style="text-align: left">
-              Below, we showcase a selection of videos generated by TesserAct. All current samples are produced using our experimental model.
-              These videos are created from a variety of input images and prompts.
-              Even though TesserAct has never been trained on data such as
-              <a href="https://www.artic.edu/artworks/64957/grapes-lemons-pears-and-apples"><u>Van Gogh paintings</u></a>
-                or 
-              <a href="https://www.ghibli.jp/works/majo/#frame&gid=1&pid=39"><u>Ghibli-style films</u></a>, it is still able to generate <a href="assets/fun.mp4">impressive results</a>.
-              We will continue to update the gallery to:
-            </p>
-            <p class="text-justify" style="text-align: center; margin-top: -5px;"><strong>
-              Explore the boundaries of TesserAct.
-            </strong></p>
-            <p class="text-justify" style="text-align: left">
-              In TesserAct, there are infinite possibilities—whether it's real-world images or samples from paintings and plays of various styles,
-              it can generate high-quality videos and 4D scenes based on user instructions.
-            </p>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="row" id="masonryContainer_1"
-                     data-masonry='{"itemSelector": ".masonry-item",                         "columnWidth": ".masonry-sizer",                         "percentPosition": true}'
-                     style="text-align:center;padding-bottom:0;padding-top:0;">
-                  <div class="masonry-sizer col-md-3"></div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/1.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the cup Franka Emika Panda </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/2.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the cup Franka Emika Panda </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/3.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the bear google robot </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/4.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the spoon Franka Emika Panda </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/5.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the orange Franka Emika Panda </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/8.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the apple Franka Emika Panda </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/9.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the apple google robot </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/10.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Use the sponge to clean up the desk google robot </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/13.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the strawberry google robot </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/14.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up cup Franka Emika Panda </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/15.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the cup Franka Emika Panda </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/21.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the cup Franka Emika Panda </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/23.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Move the cloth Franka Emika Panda </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/27.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the can google robot </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/28.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Move the cloth Trossen WidowX 250 robot arm </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/31.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the toy bear google robot </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/32.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the cup Frankx Emika Panda </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/34.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the cup Franka Emika Panda </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/35.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the orange Frankx Emika Panda </figcaption>
-                    </figure>
-                  </div>
-                  <div class="masonry-item col-md-6">
-                    <figure class="video-wrapper">
-                      <video src="assets/gallery/36.mp4"
-                             autoplay loop muted playsinline></video>
-                      <figcaption>Pick up the pepsi can google robot </figcaption>
-                    </figure>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
+    <p class="text-justify" style="text-align: left; margin-top: 0px;">
+      <b>Image-conditioned generation. </b> Our system effectively reconstructs spatial layouts 
+      and scene compositions, such as the tilted sofa in a living room, while preserving the stylistic 
+      integrity of iconic works like Van Gogh’s Bedroom in Arles.
+  </p>
 
-          <br/>
-          </div>
-        </div>
+  <div class="row justify-content-center align-items-start" style="margin-top: 10px;">
+    <div class="col-md-3 col-sm-12">
+      <div id="videoSelector2">
+        <p class="video-option2" data-src="assets/gallery/5.mp4">
+          <img src="assets/gallery/5.jpg" alt="Video 5" style="width: 100%; border-radius: 8px;">
+        </p>
+        <p class="video-option2" data-src="assets/gallery/6.mp4">
+          <img src="assets/gallery/6.png" alt="Video 6" style="width: 100%; border-radius: 8px;">
+        </p>
+        <p class="video-option2" data-src="assets/gallery/7.mp4">
+          <img src="assets/gallery/7.png" alt="Video 7" style="width: 100%; border-radius: 8px;">
+        </p>
+      </div>
+    </div>
 
-        <!-- Different Prompts Section -->
-        <div class="row">
-          <div class="col-md-8 offset-md-2">
-            <h2 id="free-camera-trajectory" style="text-align: left">
-              Action-Rich Generations
-            </h2>
-            <p class="text-justify" style="text-align: left">
-              Our model can generate action-rich videos. Results below show the generated videos with same input image and different prompts.
-            </p>
-            <div class="row">
-              <!-- Description Pills -->
-              <div
-                class="col-md-4"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  text-align: left;
-                ">
-                <!-- Input Views Row with custom scrollbar -->
-                <div
-                  style="
-                    width: 100%;
-                    height: 150px;
-                    position: relative;
-                    overflow: hidden;
-                    margin-bottom: 1rem;
-                  "
-                >
-                  <div
-                    id="input-views-container"
-                    class="d-flex flex-nowrap gap-2"
-                    style="
-                      padding: 5px;
-                      height: 100%;
-                      overflow-x: auto;
-                      overflow-y: hidden;
-                    ">
-                    <!-- Dynamically inserted images will appear here -->
-                  </div>
-                  <div
-                    id="input-views-scrollbar"
-                    style="
-                      position: absolute;
-                      bottom: 0;
-                      left: 0;
-                      right: 0;
-                      height: 8px;
-                      background: #eee;
-                    "
-                  ></div>
-                </div>
-                <br />
-                <ul class="nav nav-pills flex-column gap-2">
-                  <li
-                    class="nav-item description-pill active"
-                    data-scene="Sponge">
-                    <a class="nav-link">Sponge</a>
-                  </li>
-                  <li
-                    class="nav-item description-pill"
-                    data-scene="Fruits"
-                  >
-                    <a class="nav-link">Fruits</a>
-                  </li>
-                  <li
-                    class="nav-item description-pill"
-                    data-scene="Clothes">
-                    <a class="nav-link">Clothes</a>
-                  </li>
+    <div class="col-md-9 col-sm-12">
+      <video id="mainVideo2" src="assets/gallery/5.mp4" controls autoplay loop muted playsinline style="width:100%; object-fit:cover; border-radius:8px;"></video>
+    </div>
+  </div>
 
-                </ul>
-              </div>
-              <div class="col-md-8">
-                <!-- Video 1 Container with fixed height -->
-                <div class="row mt-2 mb-1">
-                  <div
-                    class="col-12 video-container"
-                  >
-                    <video
-                      id="free-sample_1"
-                      loop
-                      playsinline
-                      autoplay
-                      muted
-                      style="object-fit: contain"
-                    ></video>
-                  </div>
-                  <div class="text-center" style="height: 10%" >
-                    <span class="text-muted-actionrich">Pick up the sponge Google Robot.</span>
-                  </div>
-                </div>
+  <p class="text-justify" style="text-align: left; margin-top: 0px;">
+    <b>Image set as input.</b> Unlike prior methods, which are typically 
+    restricted to single-view inputs, our framework naturally accommodates 
+    unstructured and unposed image collections and consolidates
+    geometric cues from diverse viewpoints into a coherent 3D
+    layout. 
+</p>
 
-                <!-- Video 2 Container with fixed height -->
-                <div class="row mt-2 mb-1">
-                  <div class="col-12 video-container">
-                    <video
-                      id="free-sample_2"
-                      loop
-                      playsinline
-                      autoplay
-                      muted
-                      style="object-fit: contain"
-                    ></video>
-                  </div>
-                  <div class="text-center" style="height: 10%">
-                    <span class="text-muted-actionrich">Use the sponge to clean the table Google Robot.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <script>
-              document.addEventListener("DOMContentLoaded", function () {
-                const modalImage = document.getElementById("modalImage");
-                const inputViewsContainer = document.getElementById(
-                  "input-views-container",
-                );
-                inputViewsContainer.addEventListener("click", function (event) {
-                  if (event.target.classList.contains("zoomable")) {
-                    modalImage.src = event.target.src;
-                  }
-                });
-              });
-            </script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script>
-              document.addEventListener("DOMContentLoaded", function () {
-                let scene = "Sponge";
-                const video_1 = document.getElementById("free-sample_1");
-                const video_2 = document.getElementById("free-sample_2");
-                
-                // Custom Scrollbar function for horizontal scroll containers.
-                // Displays the scrollbar only when there are 5 or more images.
-                function updateCustomScrollbar(containerId, scrollbarId) {
-                  const container = document.getElementById(containerId);
-                  const scrollbar = document.getElementById(scrollbarId);
-                  if (!container || !scrollbar) return;
+  
+  <div class="row justify-content-center align-items-start" style="margin-top: 10px;">
+    <div class="col-md-3 col-sm-12 d-flex justify-content-center align-items-center">
+      <div class="video-option3">
+        <img src="assets/gallery/8.png" alt="Image 8" style="width: 100%; border-radius: 0px;">
+      </div>
+    </div>
+  
+    <div class="col-md-9 col-sm-12 d-flex justify-content-center align-items-center">
+      <video id="noSelectionVideo" src="assets/gallery/8.mp4" controls autoplay loop muted playsinline style="width:100%; object-fit:cover; border-radius:8px;"></video>
+    </div>
 
-                  // If fewer than 5 images, remove the scrollbar.
-                  if (container.children.length < 5) {
-                    scrollbar.style.display = "none";
-                    return;
-                  } else {
-                    scrollbar.style.display = "block";
-                  }
+  </div>
+    
+    
+    
 
-                  const scrollWidth = container.scrollWidth;
-                  const clientWidth = container.clientWidth;
-                  const maxScrollLeft = scrollWidth - clientWidth;
+    
+  </div>
+</div>
 
-                  // If there's overflow, calculate thumb dimensions; otherwise, thumb covers full width.
-                  const thumbWidth =
-                    maxScrollLeft > 0
-                      ? Math.max((clientWidth / scrollWidth) * clientWidth, 20)
-                      : clientWidth;
-                  const maxThumbLeft = clientWidth - thumbWidth;
-                  const thumbLeft =
-                    maxScrollLeft > 0
-                      ? (container.scrollLeft / maxScrollLeft) * maxThumbLeft
-                      : 0;
 
-                  scrollbar.innerHTML = "";
-                  const thumb = document.createElement("div");
-                  thumb.style.position = "absolute";
-                  thumb.style.left = thumbLeft + "px";
-                  thumb.style.width = thumbWidth + "px";
-                  thumb.style.height = "100%";
-                  thumb.style.background = "#888";
-                  thumb.style.borderRadius = "4px";
-                  thumb.style.cursor = "pointer";
 
-                  let isDragging = false,
-                    startX = 0,
-                    startScrollLeft = container.scrollLeft;
-                  thumb.addEventListener("mousedown", (e) => {
-                    isDragging = true;
-                    startX = e.clientX;
-                    startScrollLeft = container.scrollLeft;
-                    e.preventDefault();
-                  });
-                  const mouseMoveHandler = (e) => {
-                    if (!isDragging) return;
-                    const dx = e.clientX - startX;
-                    container.scrollLeft =
-                      startScrollLeft + (dx / maxThumbLeft) * maxScrollLeft;
-                    updateCustomScrollbar(containerId, scrollbarId);
-                  };
-                  const mouseUpHandler = () => {
-                    isDragging = false;
-                  };
-                  document.addEventListener("mousemove", mouseMoveHandler);
-                  document.addEventListener("mouseup", mouseUpHandler);
-                  scrollbar.appendChild(thumb);
-                }
 
-                // Attach scroll event to update the custom scrollbar on container scroll.
-                const inputViewsContainer = document.getElementById(
-                  "input-views-container",
-                );
-                inputViewsContainer.addEventListener("scroll", function () {
-                  updateCustomScrollbar(
-                    "input-views-container",
-                    "input-views-scrollbar",
-                  );
-                });
 
-                // Monitor changes in the container (if images are added or removed) and update the scrollbar.
-                const observer = new MutationObserver(() => {
-                  updateCustomScrollbar(
-                    "input-views-container",
-                    "input-views-scrollbar",
-                  );
-                });
-                observer.observe(inputViewsContainer, { childList: true });
 
-                // Ensure the initial scrollbar size reflects the overflow once the container is fully populated.
-                window.addEventListener("load", function () {
-                  updateCustomScrollbar(
-                    "input-views-container",
-                    "input-views-scrollbar",
-                  );
-                });
 
-                // Handle description pill clicks.
-                document
-                  .querySelectorAll(".description-pill")
-                  .forEach((pill) => {
-                    pill.addEventListener("click", function () {
-                      document
-                        .querySelectorAll(".description-pill")
-                        .forEach((p) => p.classList.remove("active"));
-                      this.classList.add("active");
-                      scene = this.dataset.scene;
-                      updateVideos();
-                      updateInputViews();
-                    });
-                  });
 
-                function updateVideos() {
-                  const basePath = `assets/multiprompt/${scene}/`;
+<br/><br/>
 
-                  video_1.src = `${basePath}val_0.mp4`;
-                  video_2.src = `${basePath}val_1.mp4`;
-                  
-                  video_1.poster = `${basePath}val_0.png`;
-                  video_2.poster = `${basePath}val_1.png`;
-                  
-                  video_1.load();
-                  video_2.load();
-                  
-                  const descriptions = {
-                    Sponge: [
-                      "Pick up the sponge Google Robot.",
-                      "Use the sponge to clean the table Google Robot.",
-                    ],
-                    Fruits: [
-                      "Pick up the green apple Franka Emika Panda.",
-                      "Move the red apple to the green apple Franka Emika Panda.",
-                    ],
-                    Clothes: [
-                      "Move the clothes Google Robot.",
-                      "Move the bag on the clothes Franka Emika Panda.",
-                    ],
-                  };
 
-                  const descriptionElements = document.querySelectorAll(".text-muted-actionrich");
 
-                  const sceneDescriptions = descriptions[scene] || [];
+       
 
-                  descriptionElements.forEach((element, index) => {
-                    element.textContent = sceneDescriptions[index] || '';
-                  });
-                }
-                
-                function updateInputViews() {
-                  const container = document.getElementById("input-views-container");
-                  container.innerHTML = ""; // Clear previous images
-                  // Define number of images and sizing per scene.
-                  const sceneImageCounts = {
-                    Fruits: [1, "80px"],
-                    Clothes: [1, "80px"],
-                    Sponge: [1, "80px"],
-                  };
-                  const numImages = sceneImageCounts[scene][0];
-                  console.log(`!!!assets/multiprompt/${numImages}/single_input_image.png`);
-                  const fixedHeight = "120px";
-
-                  // Center the container if 4 or fewer images; otherwise, align to the left.
-                  container.style.justifyContent =
-                    numImages <= 4 ? "center" : "flex-start";
-
-                  let imagesLoaded = 0;
-                  function checkAllLoaded() {
-                    imagesLoaded++;
-                    if (imagesLoaded >= numImages) {
-                      // Wait one more frame to ensure the container layout is updated.
-                      requestAnimationFrame(() => {
-                        updateCustomScrollbar(
-                          "input-views-container",
-                          "input-views-scrollbar",
-                        );
-                      });
-                    }
-                  }
-
-                  for (let i = 0; i < numImages; i++) {
-                    const img = document.createElement("img");
-                    img.className = "img-thumbnail zoomable";
-                    img.setAttribute("data-bs-toggle", "modal");
-                    img.setAttribute("data-bs-target", "#imageModal");
-                    img.style.height = fixedHeight;
-                    img.style.width = "auto";
-                    img.style.flexShrink = "0";
-                    const paddedIndex = i.toString().padStart(3, "0");
-                    img.onload = checkAllLoaded;
-                    // In case of an error, count it as loaded to avoid hanging.
-                    img.onerror = checkAllLoaded;
-                    
-                    img.src = `assets/multiprompt/${scene}/single_input_image.png`;
-                    console.log(`!!!assets/multiprompt/${scene}/single_input_image.png`);
-                    container.appendChild(img);
-                  }
-
-                  // Fallback in case there are no images.
-                  if (numImages === 0) {
-                    updateCustomScrollbar(
-                      "input-views-container",
-                      "input-views-scrollbar",
-                    );
-                  }
-                }
-                
-                updateVideos(); 
-                updateInputViews();
-                
-              });
-            </script>
-          </div>
-        </div>
-        <br /><br /><br /><br /> 
-
-        <!-- multirobot Section -->
-        <div class="row">
-          <div class="col-md-8 offset-md-2">
-            <h2 id="multirobot" style="text-align: left">Multi-Embodiment</h2>
-            <p class="text-justify" style="text-align: left">
-              Our model supports multiple robot arm conditons: Franka Emika Panda, Google Robot, and Trossen WidowX 250. 
-              Besides, these results also implies that our model have the potential to generalize to more diverse robot arms.
-              Below, we show 2 cases of coke can pick up tasks in two different styles: Ghibli and Real.
-              Both cases are generated with the same task instruction "pick up coke can" but conditioned on different robot arms.
-            </p>
-            <div class="row">
-              <!-- Left Column (Description Pills) -->
-              <div class="col-md-3 d-flex align-items-center">
-                <ul class="nav nav-pills flex-column gap-2 w-100">
-                  <li class="nav-item multirobot-pill active" data-scene="case1">
-                    <a class="nav-link text-start">Pick up coke can (Ghibli)</a>
-                  </li>
-                  <li class="nav-item multirobot-pill" data-scene="case2">
-                    <a class="nav-link text-start">Pick up coke can (Real)</a>
-                  </li>
-                </ul>
-              </div>
-              <!-- Right Column (Sample Videos) -->
-              <div class="col-md-9 d-flex align-items-center">
-                <!-- Case 1 Videos Container -->
-                <div id="case1-videos-multirobot" class="row mt-2 mb-1">
-                  <div class="row-4 video-container d-flex flex-column">
-                    <div style="height: 80%">
-                      <video
-                        class="multirobot-video w-100 h-100"
-                        loop
-                        playsinline
-                        autoplay
-                        muted
-                        style="object-fit: cover"
-                        data-case="case1"
-                        data-video="coke/franka">  
-                      </video>
-                    </div>
-                    <div class="text-center" style="height: 10%">
-                      <span class="text-muted">Franka Emika Panda</span>
-                    </div>
-                  </div>
-                  
-                  <div class="row-4 video-container d-flex flex-column">
-                    <div style="height: 80%">
-                      <video
-                        class="multirobot-video w-100 h-100"
-                        loop
-                        playsinline
-                        autoplay
-                        muted
-                        style="object-fit: cover"
-                        data-case="case1"
-                        data-video="coke/google">  
-                      </video>
-                    </div>
-                    <div class="text-center" style="height: 10%">
-                      <span class="text-muted">Google Robot</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- Case 2 Videos Container -->
-                <div id="case2-videos-multirobot" class="row mt-2 mb-1">
-                  <div class="row-4 video-container d-flex flex-column">
-                    <div style="height: 80%">
-                      <video
-                        class="multirobot-video w-100 h-100"
-                        loop
-                        playsinline
-                        autoplay
-                        muted
-                        style="object-fit: cover"
-                        data-case="case2"
-                        data-video="coke2/franka">  
-                      </video>
-                    </div>
-                    <div class="text-center" style="height: 10%">
-                      <span class="text-muted">Franka Emika Panda</span>
-                    </div>
-                  </div>
-                  
-                  <div class="row-4 video-container d-flex flex-column">
-                    <div style="height: 80%">
-                      <video
-                        class="multirobot-video w-100 h-100"
-                        loop
-                        playsinline
-                        autoplay
-                        muted
-                        style="object-fit: cover"
-                        data-case="case2"
-                        data-video="coke2/bridge">  
-                      </video>
-                    </div>
-                    <div class="text-center" style="height: 10%">
-                      <span class="text-muted">Trossen WidowX 250</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <script>
-              document.addEventListener("DOMContentLoaded", function () {
-                let currentCase_multirobot = "case1";
-                
-                // Handle multirobot pill clicks
-                document
-                .querySelectorAll(".multirobot-pill")
-                .forEach((pill) => {
-                  pill.addEventListener("click", function () {
-                    document
-                    .querySelectorAll(".multirobot-pill")
-                    .forEach((p) => p.classList.remove("active"));
-                    this.classList.add("active");
-                    currentCase_multirobot = this.dataset.scene;
-                    updateVideos();
-                  });
-                });
-                
-                function updateVideos() {
-                  // Toggle visibility of video containers
-                  document.getElementById("case1-videos-multirobot").style.display =
-                  currentCase_multirobot === "case1" ? "flex" : "none";
-                  document.getElementById("case2-videos-multirobot").style.display =
-                  currentCase_multirobot === "case2" ? "flex" : "none";                  
-                  // Update video sources if not already loaded
-                  document
-                  .querySelectorAll(".multirobot-video")
-                  .forEach((video) => {
-                    if (video.dataset.case === currentCase_multirobot && !video.src) {
-                      const videoLetter = video.dataset.video;
-                      console.log(`assets/multirobot/${videoLetter}.mp4`);
-                      video.src = `assets/multirobot/${videoLetter}.mp4`;
-                      video.poster = `assets/multirobot/${videoLetter}.png`;
-                      video.load();
-                    }
-                    });
-                  }
-                    // Initial load
-                    updateVideos();
-                  });
-            </script>
-          </div>
-        </div>
-        <br/><br/><br/><br/>
-
-        <!-- Diversity Section -->
-        <div class="row">
-          <div class="col-md-8 offset-md-2">
-            <h2 id="Generation Diversity" style="text-align: left">Generation Diversity</h2>
-            <p class="text-justify" style="text-align: left">
-               Given the same input, TesserAct can generate diverse manipulation paths, covering a wide range of possible actions.
-               Here, we show the generated videos with different random seeds during the inference process.
-            </p>
-            <div class="row">
-              <!-- Left Column (Description Pills) -->
-              <div class="col-md-3 d-flex align-items-center">
-                <ul class="nav nav-pills flex-column gap-2 w-100">
-                  <li
-                    class="nav-item diversity-pill active"
-                    data-scene="case1">
-                    <a class="nav-link text-start">
-                      Pick up the cup Franka Emika Panda
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <!-- Right Column (Sample Videos) -->
-              <div class="col-md-9 d-flex align-items-center">
-                <!-- Case 1 Videos Container -->
-                <div id="case1-videos" class="row mt-2 mb-1">
-                  <div class="row-4 video-container d-flex flex-column">
-                    <div style="height: 80%">
-                      <video
-                        class="diversity-video w-100 h-100"
-                        loop
-                        playsinline
-                        autoplay
-                        muted
-                        style="object-fit: cover"
-                        data-case="case1"
-                        data-video="pick_cup/val_0_pick_up_cup_Franka_E_0"
-                      ></video>
-                    </div>
-                    <div class="text-center" style="height: 1%">
-                      <span class="text-muted">Seed 0</span>
-                    </div>
-                  </div>
-                  
-                  <div class="row-4 video-container d-flex flex-column">
-                    <div style="height: 80%">
-                      <video
-                        class="diversity-video w-100 h-100"
-                        loop
-                        playsinline
-                        autoplay
-                        muted
-                        style="object-fit: cover"
-                        data-case="case1"
-                        data-video="pick_cup/val_0_pick_up_cup_Franka_E_1"
-                      ></video>
-                    </div>
-                    <div class="text-center" style="height: 1%">
-                      <span class="text-muted">Seed 1</span>
-                    </div>
-                  </div>
-                </div>              
-
-              </div>
-            </div>
-
-            <script>
-              document.addEventListener("DOMContentLoaded", function () {
-                let currentCase = "case1";
-
-                // Handle diversity pill clicks
-                document
-                  .querySelectorAll(".diversity-pill")
-                  .forEach((pill) => {
-                    pill.addEventListener("click", function () {
-                      document
-                        .querySelectorAll(".diversity-pill")
-                        .forEach((p) => p.classList.remove("active"));
-                      this.classList.add("active");
-                      currentCase = this.dataset.scene;
-                      updateVideos();
-                    });
-                  });
-
-                function updateVideos() {
-                  // Toggle visibility of video containers
-                  document.getElementById("case1-videos").style.display =
-                    currentCase === "case1" ? "flex" : "none";
-
-                  // Update video sources if not already loaded
-                  document
-                    .querySelectorAll(".diversity-video")
-                    .forEach((video) => {
-                      if (video.dataset.case === currentCase && !video.src) {
-                        const videoLetter = video.dataset.video;
-                        console.log(`assets/diversity/${videoLetter}.mp4`);
-                        video.src = `assets/diversity/${videoLetter}.mp4`;
-                        video.poster = `assets/diversity/${videoLetter}.png`;
-                        video.load();
-                      }
-                    });
-                }
-
-                // Initial load
-                updateVideos();
-              });
-            </script>
-          </div>
-        </div>
-        <br /><br /><br /><br />
-
-        <!-- Limitation Section -->
-        <div class="row">
-          <div class="col-md-8 offset-md-2">
-            <h2 id="Limitation" style="text-align: left">Limitations & Failure Cases ⚠️</h2>
-            <p class="text-justify" style="text-align: left">
-              <!-- Analyze the model's limitations and failure cases, driving further technological improvement. -->
-              <!-- Failure Cases:  -->
-               World models are not perfect, and TesserAct is no exception.
-               The generated videos still suffer from several limitations, including visual inconsistencies (e.g., object disappearance),
-               incorrect functional understanding (e.g., wrong affordances), and limited generalization to unseen objects.
-               For more details, please refer to
-               <a href="https://github.com/UMass-Embodied-AGI/TesserAct/blob/main/doc/usage.md">
-                <!-- GitHub repository -->
-                 Usage Documentation
-              </a> in our GitHub repository.
-            </p>
-            <p class="text-justify" style="text-align: left">
-              For most seen tasks (e.g., pick up the cup) and unseen environments (e.g., different backgrounds), TesserAct can generate reasonable results.
-              To generate a perfect video, it is recommended to infer the model with ~5 random seeds and select the best one.
-            </p>
-            <div class="row">
-              <!-- Left Column (Description Pills) -->
-              <div class="col-md-3 d-flex align-items-center">
-                <ul class="nav nav-pills flex-column gap-2 w-100">
-                  <li class="nav-item limitation-pill active" data-scene="case1">
-                    <a class="nav-link text-start">Visual Inconsistency</a>
-                  </li>
-                  <li class="nav-item limitation-pill" data-scene="case2">
-                    <a class="nav-link text-start">Incorrect Functional Understanding</a>
-                  </li>
-                  <li class="nav-item limitation-pill" data-scene="case3">
-                    <a class="nav-link text-start">Limited Generalization</a>
-                  </li>
-                </ul>
-              </div>
-              <!-- Right Column (Sample Videos) -->
-              <div class="col-md-9 d-flex align-items-center">
-                <!-- Case 1 Videos Container -->
-                <div id="case1-videos-limitation" class="row mt-2 mb-1">
-                  <div class="row-4 video-container d-flex flex-column">
-                    <div style="height: 90%">
-                      <video
-                        class="limitation-video w-100 h-100"
-                        loop
-                        playsinline
-                        autoplay
-                        muted
-                        style="object-fit: cover"
-                        data-case="case1"
-                        data-video="disappearance/cup">
-                      </video>
-                    </div>
-                    <div class="text-center" style="height: 10%">
-                      <span class="text-muted">An example where the cup vanishes during the manipulation process. </span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Case 2 Videos Container -->
-                <div id="case2-videos-limitation" class="row mt-2 mb-1"> 
-                  <div class="row-4 video-container d-flex flex-column">
-                    <div style="height: 90%">
-                      <video
-                        class="limitation-video w-100 h-100"
-                        loop
-                        playsinline
-                        autoplay
-                        muted
-                        style="object-fit: cover"
-                        data-case="case2"
-                        data-video="affordance/kettle">  
-                      </video>
-                    </div>
-                    <div class="text-center" style="height: 10%">
-                      <span class="text-muted">An example where the robot arm fails to understand the affordance of the kettle.</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Case 3 Videos Container -->
-                <div id="case3-videos-limitation" class="row mt-2 mb-1">
-                  <div class="row-4 video-container d-flex flex-column">
-                    <div style="height: 90%">
-                      <video
-                        class="limitation-video w-100 h-100"
-                        loop
-                        playsinline
-                        autoplay
-                        muted
-                        style="object-fit: cover"
-                        data-case="case3"
-                        data-video="unseen/mario">  
-                      </video>
-                    </div>
-                    <div class="text-center" style="height: 10%">
-                      <span class="text-muted">An example where the robot arm cannot pick up the whole Mario Toy, but only the head.</span>
-                    </div>
-                  </div>
-                </div>
-                
-                
-              </div>
-            </div>
-            
-            <script>
-              document.addEventListener("DOMContentLoaded", function () {
-                let currentCase_Limitation = "case1";
-                
-                // Handle limitation pill clicks
-                document
-                .querySelectorAll(".limitation-pill")
-                .forEach((pill) => {
-                  pill.addEventListener("click", function () {
-                    document
-                    .querySelectorAll(".limitation-pill")
-                    .forEach((p) => p.classList.remove("active"));
-                    this.classList.add("active");
-                    currentCase_Limitation = this.dataset.scene;
-                    updateVideos();
-                  });
-                });
-                
-                function updateVideos() {
-                  // Toggle visibility of video containers
-                  document.getElementById("case1-videos-limitation").style.display =
-                  currentCase_Limitation === "case1" ? "flex" : "none";
-                  document.getElementById("case2-videos-limitation").style.display =
-                  currentCase_Limitation === "case2" ? "flex" : "none"; 
-                  document.getElementById("case3-videos-limitation").style.display =
-                  currentCase_Limitation === "case3" ? "flex" : "none";
-                  // Update video sources if not already loaded
-                  document
-                  .querySelectorAll(".limitation-video")
-                  .forEach((video) => {
-                    if (video.dataset.case === currentCase_Limitation && !video.src) {
-                      const videoLetter = video.dataset.video;
-                      console.log(`assets/limitation/${videoLetter}.mp4`);
-                      video.src = `assets/limitation/${videoLetter}.mp4`;
-                      video.load();
-                    }
-                    });
-                  }
-                    // Initial load
-                    updateVideos();
-                  });
-            </script>
-          </div>
-        </div>
-        <br/><br/><br/><br/>
-
+       
         <div class="col-md-8 offset-md-2 text-start">
           <h3 style="text-align: center">BibTeX</h3>
           <textarea id="bibtex" class="form-control" readonly>
-@article{zhen2025tesseract,
-  title={TesserAct: Learning 4D Embodied World Models}, 
-  author={Haoyu Zhen and Qiao Sun and Hongxin Zhang and Junyan Li and Siyuan Zhou and Yilun Du and Chuang Gan},
-  year={2025},
-  eprint={2504.20995},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV},
-  url={https://arxiv.org/abs/2504.20995}, 
-}
+            @article{liu2025agentic,
+              title={Agentic 3D Scene Generation with Spatially Contextualized VLMs},
+              author={Liu, Xinhang and Tai, Yu-Wing and Tang, Chi-Keung},
+              journal={arXiv preprint arXiv:2505.20129},
+              year={2025}
+            }
           </textarea>
         </div>
         <br/><br/><br/><br/>
@@ -1343,7 +662,7 @@
             <p class="text-justify" style="text-align: right">
               <i>
                 The website template was modified based on
-                <a href="https://stable-virtual-camera.github.io/">Stable Virtual Camera</a>.
+                <a href="https://tesseractworld.github.io/">TesserAct</a>.
               </i>
             </p>
           </div>
@@ -1353,78 +672,7 @@
     
 
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const masonryContainers = document.querySelectorAll(".masonry-container");
-        masonryContainers.forEach((masonryContainer) => {
-          const posters = masonryContainer.querySelectorAll("video[poster]");
-          let loadedPosters = 0;
-          const totalPosters = posters.length;
-
-        const posters = masonryContainer.querySelectorAll("video[poster]");
-        let loadedPosters = 0;
-        const totalPosters = posters.length;
-
-        // Function to initialize masonry
-        function initMasonry() {
-          const masonry = new Masonry(masonryContainer, {
-            itemSelector: ".masonry-item",
-            columnWidth: ".masonry-sizer",
-            percentPosition: true,
-          });
-
-          // Re-layout masonry after a short delay to ensure proper positioning
-          setTimeout(() => {
-            masonry.layout();
-          }, 100);
-
-          return masonry;
-        }
-
-        // Track when all posters have loaded
-        function checkAllPostersLoaded() {
-          loadedPosters++;
-          if (loadedPosters >= totalPosters) {
-            console.log("All posters loaded, initializing masonry");
-            const masonry = initMasonry();
-
-            // Re-layout masonry when videos load or play
-            const videos = masonryContainer.querySelectorAll("video");
-            videos.forEach((video) => {
-              video.addEventListener("loadeddata", () => {
-                masonry.layout();
-              });
-
-              video.addEventListener("play", () => {
-                masonry.layout();
-              });
-            });
-          }
-        }
-
-        // Preload all poster images
-        if (totalPosters > 0) {
-          posters.forEach((video) => {
-            const img = new Image();
-            img.onload = checkAllPostersLoaded;
-            img.onerror = checkAllPostersLoaded; // Count errors too to avoid blocking
-            img.src = video.getAttribute("poster");
-          });
-        } else {
-          // If no posters, initialize masonry directly
-          initMasonry();
-        }
-
-        // Fallback: Initialize masonry after a timeout even if not all posters loaded
-        setTimeout(() => {
-          if (loadedPosters < totalPosters) {
-            console.log("Fallback: Initializing masonry after timeout");
-            initMasonry();
-          }
-        }, 3000);
-      });
-    });
-    </script>
+   
   </body>
 
 </html>
